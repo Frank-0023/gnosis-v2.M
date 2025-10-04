@@ -1,27 +1,35 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ArrowLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import MathGame from "@/components/math-game"
-import GameSelection from "@/components/game-selection"
+import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import MathGame from "@/components/math-game";
+import GameSelection from "@/components/game-selection";
 
 interface KidsSectionProps {
-  onBack: () => void
+  onBack: () => void;
 }
 
-type AgeGroup = "3-5" | "6-8" | "9-11" | null
+type AgeGroup = "3-5" | "6-8" | "9-11" | null;
 
 export default function KidsSection({ onBack }: KidsSectionProps) {
-  const [selectedAge, setSelectedAge] = useState<AgeGroup>(null)
-  const [selectedGame, setSelectedGame] = useState<string | null>(null)
+  const [selectedAge, setSelectedAge] = useState<AgeGroup>(null);
+  const [selectedGame, setSelectedGame] = useState<string | null>(null);
 
   if (selectedAge && selectedGame) {
-    return <MathGame ageGroup={selectedAge} onBack={() => setSelectedGame(null)} />
+    return (
+      <MathGame ageGroup={selectedAge} onBack={() => setSelectedGame(null)} />
+    );
   }
 
   if (selectedAge) {
-    return <GameSelection ageGroup={selectedAge} onBack={() => setSelectedAge(null)} onSelectGame={setSelectedGame} />
+    return (
+      <GameSelection
+        ageGroup={selectedAge}
+        onBack={() => setSelectedAge(null)}
+        onSelectGame={setSelectedGame}
+      />
+    );
   }
 
   return (
@@ -61,9 +69,11 @@ export default function KidsSection({ onBack }: KidsSectionProps) {
       {/* Main content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         <h1 className="text-5xl font-bold text-center mb-4">
-          <span className="text-pink-400">Seccion de Niños</span>
+          <span className="text-pink-400">Sección de Niños</span>
         </h1>
-        <p className="text-gray-300 text-center text-xl mb-12">Selecciona tu edad para comenzar</p>
+        <p className="text-gray-300 text-center text-xl mb-12">
+          Selecciona tu edad para comenzar
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* 3-5 años */}
@@ -74,7 +84,9 @@ export default function KidsSection({ onBack }: KidsSectionProps) {
 
             <h2 className="text-4xl font-bold text-white mb-4">3-5 años</h2>
 
-            <p className="text-gray-300 mb-8 leading-relaxed">Colores, formas y sumas sencillas con imagenes</p>
+            <p className="text-gray-300 mb-8 leading-relaxed">
+              Colores, formas y sumas sencillas con imágenes
+            </p>
 
             <Button
               onClick={() => setSelectedAge("3-5")}
@@ -92,7 +104,9 @@ export default function KidsSection({ onBack }: KidsSectionProps) {
 
             <h2 className="text-4xl font-bold text-white mb-4">6-8 años</h2>
 
-            <p className="text-gray-300 mb-8 leading-relaxed">Sumas, restas y conteo divertido</p>
+            <p className="text-gray-300 mb-8 leading-relaxed">
+              Sumas, restas y conteo divertido
+            </p>
 
             <Button
               onClick={() => setSelectedAge("6-8")}
@@ -110,7 +124,9 @@ export default function KidsSection({ onBack }: KidsSectionProps) {
 
             <h2 className="text-4xl font-bold text-white mb-4">9-11 años</h2>
 
-            <p className="text-gray-300 mb-8 leading-relaxed">Multiplicacion, division y problemas</p>
+            <p className="text-gray-300 mb-8 leading-relaxed">
+              Multiplicación, división y problemas
+            </p>
 
             <Button
               onClick={() => setSelectedAge("9-11")}
@@ -122,5 +138,5 @@ export default function KidsSection({ onBack }: KidsSectionProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

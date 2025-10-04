@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { ArrowLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface QuizTopic {
-  id: string
-  title: string
-  description: string
-  icon: string
-  color: string
-  borderColor: string
-  shadowColor: string
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  borderColor: string;
+  shadowColor: string;
 }
 
 interface QuizSelectionProps {
-  difficulty: "easy" | "medium" | "hard"
-  onBack: () => void
-  onSelectQuiz: (quizId: string) => void
+  difficulty: "easy" | "medium" | "hard";
+  onBack: () => void;
+  onSelectQuiz: (quizId: string) => void;
 }
 
 const quizData: Record<string, QuizTopic[]> = {
@@ -215,10 +215,14 @@ const quizData: Record<string, QuizTopic[]> = {
       shadowColor: "shadow-teal-500/20",
     },
   ],
-}
+};
 
-export default function QuizSelection({ difficulty, onBack, onSelectQuiz }: QuizSelectionProps) {
-  const quizzes = quizData[difficulty]
+export default function QuizSelection({
+  difficulty,
+  onBack,
+  onSelectQuiz,
+}: QuizSelectionProps) {
+  const quizzes = quizData[difficulty];
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
@@ -258,10 +262,17 @@ export default function QuizSelection({ difficulty, onBack, onSelectQuiz }: Quiz
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         <h1 className="text-5xl font-bold text-center mb-4">
           <span className="text-cyan-400">
-            Quizzes - Nivel {difficulty === "easy" ? "Fácil" : difficulty === "medium" ? "Medio" : "Difícil"}
+            Quizzes - Nivel{" "}
+            {difficulty === "easy"
+              ? "Fácil"
+              : difficulty === "medium"
+              ? "Medio"
+              : "Difícil"}
           </span>
         </h1>
-        <p className="text-gray-300 text-center text-xl mb-12">Selecciona un tema para comenzar</p>
+        <p className="text-gray-300 text-center text-xl mb-12">
+          Selecciona un tema para comenzar
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {quizzes.map((quiz) => (
@@ -276,9 +287,13 @@ export default function QuizSelection({ difficulty, onBack, onSelectQuiz }: Quiz
                 <div className="text-5xl">{quiz.icon}</div>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-2 text-balance">{quiz.title}</h3>
+              <h3 className="text-2xl font-bold text-white mb-2 text-balance">
+                {quiz.title}
+              </h3>
 
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">{quiz.description}</p>
+              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                {quiz.description}
+              </p>
 
               <Button
                 className={`w-full h-10 text-sm font-bold rounded-xl bg-gradient-to-r ${quiz.color} hover:opacity-90 text-white shadow-lg`}
@@ -290,5 +305,5 @@ export default function QuizSelection({ difficulty, onBack, onSelectQuiz }: Quiz
         </div>
       </div>
     </div>
-  )
+  );
 }

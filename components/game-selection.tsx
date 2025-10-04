@@ -1,35 +1,35 @@
-"use client"
+"use client";
 
-import { ArrowLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import AnimalAddition from "./games/animal-addition"
-import DinosaurSubtraction from "./games/dinosaur-subtraction"
-import ShapesGame from "./games/shapes-game"
-import CountingGame from "./games/counting-game"
-import JungleAdventure from "./games/jungle-adventure"
-import NumberSoup from "./games/number-soup"
-import MathHangman from "./games/math-hangman"
-import AdvancedMathHangman from "./games/advanced-math-hangman"
-import JungleAdventureMultiplication from "./games/jungle-adventure-multiplication"
-import JungleAdventureDivision from "./games/jungle-adventure-division"
-import MultiplicationTable from "./games/multiplication-table"
-import AsteroidDestroyer from "./games/asteroid-destroyer"
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import AnimalAddition from "./games/animal-addition";
+import DinosaurSubtraction from "./games/dinosaur-subtraction";
+import ShapesGame from "./games/shapes-game";
+import CountingGame from "./games/counting-game";
+import JungleAdventure from "./games/jungle-adventure";
+import NumberSoup from "./games/number-soup";
+import MathHangman from "./games/math-hangman";
+import AdvancedMathHangman from "./games/advanced-math-hangman";
+import JungleAdventureMultiplication from "./games/jungle-adventure-multiplication";
+import JungleAdventureDivision from "./games/jungle-adventure-division";
+import MultiplicationTable from "./games/multiplication-table";
+import AsteroidDestroyer from "./games/asteroid-destroyer";
 
 interface Game {
-  id: string
-  title: string
-  description: string
-  icon: string
-  color: string
-  borderColor: string
-  shadowColor: string
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+  borderColor: string;
+  shadowColor: string;
 }
 
 interface GameSelectionProps {
-  ageGroup: "3-5" | "6-8" | "9-11"
-  onBack: () => void
-  onSelectGame: (gameId: string) => void
+  ageGroup: "3-5" | "6-8" | "9-11";
+  onBack: () => void;
+  onSelectGame: (gameId: string) => void;
 }
 
 const gamesData: Record<string, Game[]> = {
@@ -45,7 +45,7 @@ const gamesData: Record<string, Game[]> = {
     },
     {
       id: "shapes",
-      title: "Formas Geometricas",
+      title: "Formas Geométricas",
       description: "Identifica formas y colores básicos",
       icon: "🔷",
       color: "from-purple-500 to-violet-500",
@@ -92,7 +92,7 @@ const gamesData: Record<string, Game[]> = {
     },
     {
       id: "math-hangman",
-      title: "Ahorcado Matematico",
+      title: "Ahorcado Matemático",
       description: "Adivina el resultado resolviendo sumas y restas",
       icon: "🎯",
       color: "from-cyan-500 to-blue-500",
@@ -237,86 +237,90 @@ const gamesData: Record<string, Game[]> = {
       shadowColor: "shadow-pink-500/20",
     },
   ],
-}
+};
 
-export default function GameSelection({ ageGroup, onBack, onSelectGame }: GameSelectionProps) {
-  const games = gamesData[ageGroup]
-  const [selectedGame, setSelectedGame] = useState<string | null>(null)
+export default function GameSelection({
+  ageGroup,
+  onBack,
+  onSelectGame,
+}: GameSelectionProps) {
+  const games = gamesData[ageGroup];
+  const [selectedGame, setSelectedGame] = useState<string | null>(null);
 
   const handleGameSelect = (gameId: string) => {
-    setSelectedGame(gameId)
-  }
+    setSelectedGame(gameId);
+  };
 
   const handleBackFromGame = () => {
-    setSelectedGame(null)
-  }
+    setSelectedGame(null);
+  };
 
   // Render specific game component
   if (selectedGame === "counting") {
-    return <CountingGame onBack={handleBackFromGame} />
+    return <CountingGame onBack={handleBackFromGame} />;
   }
   if (selectedGame === "shapes") {
-    return <ShapesGame onBack={handleBackFromGame} />
+    return <ShapesGame onBack={handleBackFromGame} />;
   }
   if (selectedGame === "simple-addition") {
-    return <AnimalAddition onBack={handleBackFromGame} />
+    return <AnimalAddition onBack={handleBackFromGame} />;
   }
   if (selectedGame === "jungle-adventure") {
-    return <JungleAdventure onBack={handleBackFromGame} />
+    return <JungleAdventure onBack={handleBackFromGame} />;
   }
   if (selectedGame === "asteroid-destroyer") {
-    return <AsteroidDestroyer onBack={handleBackFromGame} />
+    return <AsteroidDestroyer onBack={handleBackFromGame} />;
   }
   if (selectedGame === "math-hangman") {
-    return <MathHangman onBack={handleBackFromGame} />
+    return <MathHangman onBack={handleBackFromGame} />;
   }
   if (selectedGame === "number-soup-addition") {
-    return <NumberSoup onBack={handleBackFromGame} operation="addition" />
+    return <NumberSoup onBack={handleBackFromGame} operation="addition" />;
   }
   if (selectedGame === "number-soup-subtraction") {
-    return <NumberSoup onBack={handleBackFromGame} operation="subtraction" />
+    return <NumberSoup onBack={handleBackFromGame} operation="subtraction" />;
   }
   if (selectedGame === "jungle-multiplication") {
-    return <JungleAdventureMultiplication onBack={handleBackFromGame} />
+    return <JungleAdventureMultiplication onBack={handleBackFromGame} />;
   }
   if (selectedGame === "jungle-division") {
-    return <JungleAdventureDivision onBack={handleBackFromGame} />
+    return <JungleAdventureDivision onBack={handleBackFromGame} />;
   }
   if (selectedGame === "dinosaur-subtraction") {
-    return <DinosaurSubtraction onBack={handleBackFromGame} />
+    return <DinosaurSubtraction onBack={handleBackFromGame} />;
   }
   if (selectedGame === "table-1") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={1} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={1} />;
   }
   if (selectedGame === "table-2") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={2} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={2} />;
   }
   if (selectedGame === "table-3") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={3} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={3} />;
   }
   if (selectedGame === "table-4") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={4} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={4} />;
   }
   if (selectedGame === "table-5") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={5} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={5} />;
   }
   if (selectedGame === "table-6") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={6} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={6} />;
   }
   if (selectedGame === "table-7") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={7} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={7} />;
   }
   if (selectedGame === "table-8") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={8} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={8} />;
   }
   if (selectedGame === "table-9") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={9} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={9} />;
   }
   if (selectedGame === "table-10") {
-    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={10} />
+    return <MultiplicationTable onBack={handleBackFromGame} tableNumber={10} />;
   }
   if (selectedGame === "advanced-math-hangman") {
-    return <AdvancedMathHangman onBack={handleBackFromGame} />
+    return <AdvancedMathHangman onBack={handleBackFromGame} />;
   }
 
   return (
@@ -358,7 +362,9 @@ export default function GameSelection({ ageGroup, onBack, onSelectGame }: GameSe
         <h1 className="text-5xl font-bold text-center mb-4">
           <span className="text-pink-400">Juegos para {ageGroup} años</span>
         </h1>
-        <p className="text-gray-300 text-center text-xl mb-12">Selecciona un juego para comenzar</p>
+        <p className="text-gray-300 text-center text-xl mb-12">
+          Selecciona un juego para comenzar
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {games.map((game) => (
@@ -373,9 +379,13 @@ export default function GameSelection({ ageGroup, onBack, onSelectGame }: GameSe
                 <div className="text-5xl">{game.icon}</div>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-2 text-balance">{game.title}</h3>
+              <h3 className="text-2xl font-bold text-white mb-2 text-balance">
+                {game.title}
+              </h3>
 
-              <p className="text-gray-300 text-sm mb-4 leading-relaxed">{game.description}</p>
+              <p className="text-gray-300 text-sm mb-4 leading-relaxed">
+                {game.description}
+              </p>
 
               <Button
                 className={`w-full h-10 text-sm font-bold rounded-xl bg-gradient-to-r ${game.color} hover:opacity-90 text-white shadow-lg`}
@@ -387,5 +397,5 @@ export default function GameSelection({ ageGroup, onBack, onSelectGame }: GameSe
         </div>
       </div>
     </div>
-  )
+  );
 }

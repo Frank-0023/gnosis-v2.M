@@ -1,51 +1,92 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { ArrowLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import QuizSelection from "@/components/quiz-selection"
-import Quiz from "@/components/quiz"
-import MathLogicQuiz from "@/components/quizzes/math-logic-quiz"
-import AdvancedNumberSoup from "@/components/quizzes/advanced-number-soup"
-import VaultEscape from "@/components/quizzes/vault-escape"
-import RiddlesQuiz from "@/components/quizzes/riddles-quiz"
-import LogicPatternsQuiz from "@/components/quizzes/logic-patterns-quiz"
-import LogicReasoningQuiz from "@/components/quizzes/logic-reasoning-quiz"
-import GeneralMathHangman from "@/components/quizzes/general-math-hangman"
+import { useState } from "react";
+import { ArrowLeft } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import QuizSelection from "@/components/quiz-selection";
+import Quiz from "@/components/quiz";
+import MathLogicQuiz from "@/components/quizzes/math-logic-quiz";
+import AdvancedNumberSoup from "@/components/quizzes/advanced-number-soup";
+import VaultEscape from "@/components/quizzes/vault-escape";
+import RiddlesQuiz from "@/components/quizzes/riddles-quiz";
+import LogicPatternsQuiz from "@/components/quizzes/logic-patterns-quiz";
+import LogicReasoningQuiz from "@/components/quizzes/logic-reasoning-quiz";
+import GeneralMathHangman from "@/components/quizzes/general-math-hangman";
 
 interface GeneralSectionProps {
-  onBack: () => void
+  onBack: () => void;
 }
 
-type Difficulty = "easy" | "medium" | "hard" | null
+type Difficulty = "easy" | "medium" | "hard" | null;
 
 export default function GeneralSection({ onBack }: GeneralSectionProps) {
-  const [selectedDifficulty, setSelectedDifficulty] = useState<Difficulty>(null)
-  const [selectedQuiz, setSelectedQuiz] = useState<string | null>(null)
+  const [selectedDifficulty, setSelectedDifficulty] =
+    useState<Difficulty>(null);
+  const [selectedQuiz, setSelectedQuiz] = useState<string | null>(null);
 
   if (selectedDifficulty && selectedQuiz) {
     if (selectedQuiz === "math-logic") {
-      return <MathLogicQuiz difficulty={selectedDifficulty} onBack={() => setSelectedQuiz(null)} />
+      return (
+        <MathLogicQuiz
+          difficulty={selectedDifficulty}
+          onBack={() => setSelectedQuiz(null)}
+        />
+      );
     }
     if (selectedQuiz === "number-soup") {
-      return <AdvancedNumberSoup difficulty={selectedDifficulty} onBack={() => setSelectedQuiz(null)} />
+      return (
+        <AdvancedNumberSoup
+          difficulty={selectedDifficulty}
+          onBack={() => setSelectedQuiz(null)}
+        />
+      );
     }
     if (selectedQuiz === "vault-escape") {
-      return <VaultEscape difficulty={selectedDifficulty} onBack={() => setSelectedQuiz(null)} />
+      return (
+        <VaultEscape
+          difficulty={selectedDifficulty}
+          onBack={() => setSelectedQuiz(null)}
+        />
+      );
     }
     if (selectedQuiz === "riddles") {
-      return <RiddlesQuiz difficulty={selectedDifficulty} onBack={() => setSelectedQuiz(null)} />
+      return (
+        <RiddlesQuiz
+          difficulty={selectedDifficulty}
+          onBack={() => setSelectedQuiz(null)}
+        />
+      );
     }
     if (selectedQuiz === "logic-patterns") {
-      return <LogicPatternsQuiz difficulty={selectedDifficulty} onBack={() => setSelectedQuiz(null)} />
+      return (
+        <LogicPatternsQuiz
+          difficulty={selectedDifficulty}
+          onBack={() => setSelectedQuiz(null)}
+        />
+      );
     }
     if (selectedQuiz === "logic-reasoning") {
-      return <LogicReasoningQuiz difficulty={selectedDifficulty} onBack={() => setSelectedQuiz(null)} />
+      return (
+        <LogicReasoningQuiz
+          difficulty={selectedDifficulty}
+          onBack={() => setSelectedQuiz(null)}
+        />
+      );
     }
     if (selectedQuiz === "math-hangman") {
-      return <GeneralMathHangman difficulty={selectedDifficulty} onBack={() => setSelectedQuiz(null)} />
+      return (
+        <GeneralMathHangman
+          difficulty={selectedDifficulty}
+          onBack={() => setSelectedQuiz(null)}
+        />
+      );
     }
-    return <Quiz difficulty={selectedDifficulty} onBack={() => setSelectedQuiz(null)} />
+    return (
+      <Quiz
+        difficulty={selectedDifficulty}
+        onBack={() => setSelectedQuiz(null)}
+      />
+    );
   }
 
   if (selectedDifficulty) {
@@ -55,7 +96,7 @@ export default function GeneralSection({ onBack }: GeneralSectionProps) {
         onBack={() => setSelectedDifficulty(null)}
         onSelectQuiz={setSelectedQuiz}
       />
-    )
+    );
   }
 
   return (
@@ -93,7 +134,9 @@ export default function GeneralSection({ onBack }: GeneralSectionProps) {
         <h1 className="text-5xl font-bold text-center mb-4">
           <span className="text-cyan-400">Sección General</span>
         </h1>
-        <p className="text-gray-300 text-center text-xl mb-12">Seleacna el nivel of dificlicad</p>
+        <p className="text-gray-300 text-center text-xl mb-12">
+          Selecciona el nivel de dificultad
+        </p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-gradient-to-br from-cyan-900/40 to-blue-900/40 backdrop-blur-md rounded-3xl border-2 border-cyan-500/50 shadow-2xl shadow-cyan-500/20 p-8 hover:scale-105 transition-all duration-300">
@@ -101,10 +144,11 @@ export default function GeneralSection({ onBack }: GeneralSectionProps) {
               <div className="text-6xl">😊</div>
             </div>
 
-            <h2 className="text-4xl font-bold text-white mb-4">Facil</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Fácil</h2>
 
             <p className="text-gray-300 mb-8 leading-relaxed">
-              Juegos de matematicas divertidos para todas las edades. Aprende sumando, restando y m-mas!
+              Juegos de matemáticas divertidos para todas las edades. Aprende
+              sumando, restando y más!
             </p>
 
             <Button
@@ -123,7 +167,8 @@ export default function GeneralSection({ onBack }: GeneralSectionProps) {
             <h2 className="text-4xl font-bold text-white mb-4">Medio</h2>
 
             <p className="text-gray-300 mb-8 leading-relaxed">
-              Quizzes y acertijos matematicos para todas las edades. Pon a prueba tu logica!
+              Cuestionarios y acertijos matematicos para todas las edades. Pon a
+              prueba tu lógica!
             </p>
 
             <Button
@@ -139,10 +184,11 @@ export default function GeneralSection({ onBack }: GeneralSectionProps) {
               <div className="text-6xl">⚡</div>
             </div>
 
-            <h2 className="text-4xl font-bold text-white mb-4">Dificil</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">Difícil</h2>
 
             <p className="text-gray-300 mb-8 leading-relaxed">
-              Un nuevo desafio matematico cada dia. Resuelve y gana estrellas especiales!
+              Un nuevo desafío matemático cada día. Resuelve y gana estrellas
+              especiales!
             </p>
 
             <Button
@@ -155,5 +201,5 @@ export default function GeneralSection({ onBack }: GeneralSectionProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }

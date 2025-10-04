@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Rocket, BookOpen, Zap, LogOut, Sparkles } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import KidsSection from "@/components/kids-section"
-import GeneralSection from "@/components/general-section"
-import DailyChallenge from "@/components/daily-challenge"
+import { useState } from "react";
+import { Rocket, BookOpen, Zap, LogOut, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import KidsSection from "@/components/kids-section";
+import GeneralSection from "@/components/general-section";
+import DailyChallenge from "@/components/daily-challenge";
 
 interface DashboardProps {
-  userName: string
-  onLogout: () => void
+  userName: string;
+  onLogout: () => void;
 }
 
-type Section = "dashboard" | "kids" | "general" | "daily"
+type Section = "dashboard" | "kids" | "general" | "daily";
 
 export default function Dashboard({ userName, onLogout }: DashboardProps) {
-  const [currentSection, setCurrentSection] = useState<Section>("dashboard")
+  const [currentSection, setCurrentSection] = useState<Section>("dashboard");
   const [stars, setStars] = useState(() => {
-    const stored = localStorage.getItem("gnosisStars")
-    return stored ? Number.parseInt(stored) : 0
-  })
+    const stored = localStorage.getItem("gnosisStars");
+    return stored ? Number.parseInt(stored) : 0;
+  });
 
   if (currentSection === "kids") {
-    return <KidsSection onBack={() => setCurrentSection("dashboard")} />
+    return <KidsSection onBack={() => setCurrentSection("dashboard")} />;
   }
 
   if (currentSection === "general") {
-    return <GeneralSection onBack={() => setCurrentSection("dashboard")} />
+    return <GeneralSection onBack={() => setCurrentSection("dashboard")} />;
   }
 
   if (currentSection === "daily") {
-    return <DailyChallenge onBack={() => setCurrentSection("dashboard")} />
+    return <DailyChallenge onBack={() => setCurrentSection("dashboard")} />;
   }
 
   return (
@@ -66,7 +66,7 @@ export default function Dashboard({ userName, onLogout }: DashboardProps) {
               <h1 className="text-3xl font-bold text-white">
                 Hola, <span className="text-cyan-400">{userName}</span>!
               </h1>
-              <p className="text-gray-400">Listo para aprender matematicas?</p>
+              <p className="text-gray-400">Listo para aprender matemáticas?</p>
             </div>
           </div>
 
@@ -102,15 +102,20 @@ export default function Dashboard({ userName, onLogout }: DashboardProps) {
             <h2 className="text-4xl font-bold text-white mb-4">Niños</h2>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Juegos de matematicas divertidos para todas las edades. Aprende sumando, restando y m-mas!
+              Juegos de matemáticas divertidos para todas las edades. Aprende
+              sumando, restando y más!
             </p>
 
             <div className="flex flex-wrap gap-2 mb-6">
-              <span className="bg-pink-600/50 text-pink-200 px-4 py-2 rounded-full text-sm font-medium">3-5 años</span>
+              <span className="bg-pink-600/50 text-pink-200 px-4 py-2 rounded-full text-sm font-medium">
+                3-5 años
+              </span>
               <span className="bg-purple-600/50 text-purple-200 px-4 py-2 rounded-full text-sm font-medium">
                 6-8 años
               </span>
-              <span className="bg-blue-600/50 text-blue-200 px-4 py-2 rounded-full text-sm font-medium">9-11 años</span>
+              <span className="bg-blue-600/50 text-blue-200 px-4 py-2 rounded-full text-sm font-medium">
+                9-11 años
+              </span>
             </div>
 
             <Button className="w-full h-12 text-lg font-bold rounded-2xl bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-400 hover:to-purple-400 text-white shadow-lg shadow-pink-500/50">
@@ -130,14 +135,19 @@ export default function Dashboard({ userName, onLogout }: DashboardProps) {
             <h2 className="text-4xl font-bold text-white mb-4">General</h2>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Quizzes y acertijos matematicos para todas las edades. Pon a prueba tu logica!
+              Cuestionarios y acertijos matemáticos para todas las edades. Pon a
+              prueba tu lógica!
             </p>
 
             <div className="flex flex-wrap gap-2 mb-6">
-              <span className="bg-blue-600/50 text-blue-200 px-4 py-2 rounded-full text-sm font-medium">Facil</span>
-              <span className="bg-teal-600/50 text-teal-200 px-4 py-2 rounded-full text-sm font-medium">Medio</span>
+              <span className="bg-blue-600/50 text-blue-200 px-4 py-2 rounded-full text-sm font-medium">
+                Fácil
+              </span>
+              <span className="bg-teal-600/50 text-teal-200 px-4 py-2 rounded-full text-sm font-medium">
+                Medio
+              </span>
               <span className="bg-purple-600/50 text-purple-200 px-4 py-2 rounded-full text-sm font-medium">
-                Dificil
+                Difícil
               </span>
             </div>
 
@@ -158,12 +168,15 @@ export default function Dashboard({ userName, onLogout }: DashboardProps) {
             <h2 className="text-4xl font-bold text-white mb-4">Reto Diario</h2>
 
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Un nuevo desafio matematico cada dia. Resuelve y gana estrellas especiales!
+              Un nuevo desafío matemático cada día. Resuelve y gana estrellas
+              especiales!
             </p>
 
             <div className="bg-yellow-900/30 border border-yellow-500/50 rounded-2xl p-4 mb-6 flex items-center gap-3">
               <div className="text-2xl">🏆</div>
-              <span className="text-yellow-400 font-medium">Nuevo reto disponible!</span>
+              <span className="text-yellow-400 font-medium">
+                Nuevo reto disponible!
+              </span>
             </div>
 
             <Button className="w-full h-12 text-lg font-bold rounded-2xl bg-gradient-to-r from-orange-500 to-pink-500 hover:from-orange-400 hover:to-pink-400 text-white shadow-lg shadow-orange-500/50">
@@ -173,5 +186,5 @@ export default function Dashboard({ userName, onLogout }: DashboardProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
