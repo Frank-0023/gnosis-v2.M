@@ -100,7 +100,7 @@ export default function MathHangman({ onBack }: MathHangmanProps) {
         return (
           <div
             key={index}
-            className="w-16 h-20 bg-white/10 border-2 border-cyan-500/50 rounded-xl flex items-center justify-center text-4xl font-bold text-white"
+            className="w-10 h-12 sm:w-12 sm:h-16 md:w-16 md:h-20 bg-white/10 border-2 border-cyan-500/50 rounded-lg sm:rounded-xl flex items-center justify-center text-2xl sm:text-3xl md:text-4xl font-bold text-white"
           >
             {guessedDigits.has(digitNum) || gameLost ? digit : "_"}
           </div>
@@ -112,17 +112,17 @@ export default function MathHangman({ onBack }: MathHangmanProps) {
     const parts = ["😰", "👕", "👖", "👞", "👞", "💀"];
     return (
       <div className="flex flex-col items-center gap-2">
-        <div className="text-8xl mb-4">
+        <div className="text-5xl sm:text-6xl md:text-8xl mb-2 sm:mb-4">
           {wrongGuesses >= MAX_WRONG ? "💀" : "😊"}
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-1 sm:gap-2">
           {parts.slice(0, wrongGuesses).map((part, i) => (
-            <div key={i} className="text-3xl">
+            <div key={i} className="text-xl sm:text-2xl md:text-3xl">
               {part}
             </div>
           ))}
         </div>
-        <p className="text-white text-xl mt-2">
+        <p className="text-white text-base sm:text-lg md:text-xl mt-2">
           Errores: {wrongGuesses}/{MAX_WRONG}
         </p>
       </div>
@@ -147,21 +147,23 @@ export default function MathHangman({ onBack }: MathHangmanProps) {
             />
           ))}
         </div>
-        <div className="relative z-10 text-center">
-          <div className="text-8xl mb-6">🏆</div>
-          <h2 className="text-5xl font-bold text-white mb-4">
+        <div className="relative z-10 text-center px-4">
+          <div className="text-5xl sm:text-6xl md:text-8xl mb-4 sm:mb-6">
+            🏆
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
             Juego Completado!
           </h2>
-          <p className="text-2xl text-cyan-300 mb-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-cyan-300 mb-3 sm:mb-4">
             Acertaste: <span className="text-pink-400 font-bold">{score}</span>{" "}
             de {MAX_QUESTIONS}
           </p>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8">
             Puntuación: {Math.round((score / MAX_QUESTIONS) * 100)}%
           </p>
           <Button
             onClick={onBack}
-            className="bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 text-white text-xl px-8 py-6 rounded-2xl"
+            className="bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 text-white text-base sm:text-lg md:text-xl px-6 sm:px-8 py-4 sm:py-6 rounded-2xl"
           >
             Volver al Menu
           </Button>
@@ -195,69 +197,75 @@ export default function MathHangman({ onBack }: MathHangmanProps) {
       </div>
 
       {/* Planets */}
-      <div className="absolute top-20 right-10 w-24 h-24 rounded-full bg-gradient-to-br from-orange-400 to-red-500 opacity-60 animate-pulse" />
+      <div className="absolute top-10 sm:top-20 right-5 sm:right-10 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-orange-400 to-red-500 opacity-60 animate-pulse" />
       <div
-        className="absolute bottom-40 left-20 w-32 h-32 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 opacity-50 animate-pulse"
+        className="absolute bottom-20 sm:bottom-40 left-10 sm:left-20 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 opacity-50 animate-pulse"
         style={{ animationDelay: "1s" }}
       />
 
-      <div className="relative z-10 p-6 flex justify-between items-center">
+      {/* Header */}
+      <div className="relative z-10 p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
         <Button
           onClick={onBack}
           variant="outline"
-          className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
+          className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm text-sm sm:text-base"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
+          <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
           Volver
         </Button>
-        <div className="flex gap-4">
-          <div className="bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-3 rounded-full border-2 border-white/30 shadow-lg">
-            <span className="text-white font-bold text-xl">
+        <div className="flex gap-2 sm:gap-4 w-full sm:w-auto">
+          <div className="bg-gradient-to-r from-cyan-500 to-teal-500 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full border-2 border-white/30 shadow-lg flex-1 sm:flex-none">
+            <span className="text-white font-bold text-sm sm:text-base md:text-xl">
               Pregunta {questionCount}/{MAX_QUESTIONS}
             </span>
           </div>
-          <div className="bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 rounded-full border-2 border-white/30 shadow-lg">
-            <span className="text-white font-bold text-xl">⭐ {score}</span>
+          <div className="bg-gradient-to-r from-pink-500 to-purple-500 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full border-2 border-white/30 shadow-lg">
+            <span className="text-white font-bold text-sm sm:text-base md:text-xl">
+              ⭐ {score}
+            </span>
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-12">
-        <div className="bg-gradient-to-br from-teal-500/20 to-cyan-500/20 backdrop-blur-xl rounded-3xl border-2 border-teal-500/50 shadow-2xl shadow-teal-500/20 p-8">
-          <h2 className="text-4xl font-bold text-center text-white mb-8">
+      {/* Main content */}
+      <div className="relative z-10 max-w-5xl mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
+        <div className="bg-gradient-to-br from-teal-500/20 to-cyan-500/20 backdrop-blur-xl rounded-2xl sm:rounded-3xl border-2 border-teal-500/50 shadow-2xl shadow-teal-500/20 p-4 sm:p-6 md:p-8">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-white mb-4 sm:mb-6 md:mb-8">
             Ahorcado Matematico
           </h2>
 
           {gameLost && (
-            <div className="mb-6 p-6 bg-red-500/20 border-2 border-red-500 rounded-xl text-center animate-pulse">
-              <p className="text-red-300 text-3xl font-bold mb-2">
+            <div className="mb-4 sm:mb-6 p-4 sm:p-6 bg-red-500/20 border-2 border-red-500 rounded-xl text-center animate-pulse">
+              <p className="text-red-300 text-xl sm:text-2xl md:text-3xl font-bold mb-2">
                 Perdiste, vuelve a intentarlo
               </p>
-              <p className="text-white text-xl">
+              <p className="text-white text-base sm:text-lg md:text-xl">
                 La respuesta era: {correctAnswer}
               </p>
             </div>
           )}
 
-          <div className="grid grid-cols-2 gap-8 mb-8">
-            <div className="bg-purple-900/30 rounded-2xl p-6 border-2 border-purple-500/30">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-6 md:mb-8">
+            <div className="bg-purple-900/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-purple-500/30">
               {renderHangman()}
             </div>
 
-            <div className="bg-cyan-900/30 rounded-2xl p-6 border-2 border-cyan-500/30 flex flex-col items-center justify-center">
-              <p className="text-2xl text-white mb-4">Resuelve:</p>
-              <div className="text-5xl font-bold text-white mb-6">
+            <div className="bg-cyan-900/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-cyan-500/30 flex flex-col items-center justify-center">
+              <p className="text-lg sm:text-xl md:text-2xl text-white mb-3 sm:mb-4">
+                Resuelve:
+              </p>
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
                 {num1} {operation} {num2} = ?
               </div>
-              <div className="flex gap-2">{renderAnswer()}</div>
+              <div className="flex gap-1 sm:gap-2">{renderAnswer()}</div>
             </div>
           </div>
 
-          <div className="bg-pink-900/30 rounded-2xl p-6 border-2 border-pink-500/30">
-            <p className="text-white text-xl mb-4 text-center">
+          <div className="bg-pink-900/30 rounded-xl sm:rounded-2xl p-4 sm:p-6 border-2 border-pink-500/30">
+            <p className="text-white text-base sm:text-lg md:text-xl mb-3 sm:mb-4 text-center">
               Selecciona un numero:
             </p>
-            <div className="grid grid-cols-5 gap-3">
+            <div className="grid grid-cols-5 gap-2 sm:gap-3">
               {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((digit) => (
                 <Button
                   key={digit}
@@ -265,7 +273,7 @@ export default function MathHangman({ onBack }: MathHangmanProps) {
                   disabled={
                     guessedDigits.has(digit) || questionSolved || gameLost
                   }
-                  className={`h-16 text-3xl font-bold rounded-xl transition-all duration-300 ${
+                  className={`h-12 sm:h-14 md:h-16 text-xl sm:text-2xl md:text-3xl font-bold rounded-lg sm:rounded-xl transition-all duration-300 ${
                     guessedDigits.has(digit)
                       ? "bg-gray-600 opacity-50 cursor-not-allowed"
                       : "bg-gradient-to-r from-pink-500 to-purple-500 hover:scale-105"

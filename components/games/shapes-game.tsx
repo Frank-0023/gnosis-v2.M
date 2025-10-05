@@ -109,21 +109,23 @@ export default function ShapesGame({ onBack }: ShapesGameProps) {
             />
           ))}
         </div>
-        <div className="relative z-10 text-center">
-          <div className="text-8xl mb-6">🏆</div>
-          <h2 className="text-5xl font-bold text-white mb-4">
+        <div className="relative z-10 text-center px-4">
+          <div className="text-5xl sm:text-6xl md:text-8xl mb-4 sm:mb-6">
+            🏆
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
             Juego Completado!
           </h2>
-          <p className="text-2xl text-cyan-300 mb-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-cyan-300 mb-3 sm:mb-4">
             Acertaste: <span className="text-pink-400 font-bold">{score}</span>{" "}
             de {MAX_QUESTIONS}
           </p>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8">
             Puntuación: {Math.round((score / MAX_QUESTIONS) * 100)}%
           </p>
           <Button
             onClick={onBack}
-            className="bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 text-white text-xl px-8 py-6 rounded-2xl"
+            className="bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 text-white text-base sm:text-lg md:text-xl px-6 sm:px-8 py-4 sm:py-6 rounded-2xl"
           >
             Volver al Menu
           </Button>
@@ -153,60 +155,62 @@ export default function ShapesGame({ onBack }: ShapesGameProps) {
           />
         ))}
       </div>
-      <div className="absolute top-20 left-10 w-20 h-20 rounded-full bg-gradient-to-br from-orange-400 to-red-500 opacity-60 animate-pulse" />
+      <div className="absolute top-10 sm:top-20 left-5 sm:left-10 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-orange-400 to-red-500 opacity-60 animate-pulse" />
       <div
-        className="absolute top-40 right-20 w-32 h-32 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 opacity-50 animate-pulse"
+        className="absolute top-20 sm:top-40 right-10 sm:right-20 w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-blue-400 to-cyan-500 opacity-50 animate-pulse"
         style={{ animationDelay: "1s" }}
       />
       <div
-        className="absolute bottom-32 left-1/4 w-16 h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 opacity-60 animate-pulse"
+        className="absolute bottom-16 sm:bottom-32 left-1/4 w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 opacity-60 animate-pulse"
         style={{ animationDelay: "2s" }}
       />
-      <div className="relative z-10 p-6 flex justify-between items-center">
+      <div className="relative z-10 p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
         <Button
           onClick={onBack}
           variant="outline"
-          className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
+          className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm text-sm sm:text-base"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
+          <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
           Volver
         </Button>
-        <div className="flex gap-4">
-          <div className="bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-3 rounded-full border-2 border-white/30 shadow-lg">
-            <span className="text-white font-bold text-xl">
+        <div className="flex gap-2 sm:gap-4 w-full sm:w-auto">
+          <div className="bg-gradient-to-r from-cyan-500 to-teal-500 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full border-2 border-white/30 shadow-lg flex-1 sm:flex-none">
+            <span className="text-white font-bold text-sm sm:text-base md:text-xl">
               Pregunta {questionCount}/{MAX_QUESTIONS}
             </span>
           </div>
-          <div className="bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 rounded-full border-2 border-white/30 shadow-lg">
-            <span className="text-white font-bold text-xl">⭐ {score}</span>
+          <div className="bg-gradient-to-r from-pink-500 to-purple-500 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full border-2 border-white/30 shadow-lg">
+            <span className="text-white font-bold text-sm sm:text-base md:text-xl">
+              ⭐ {score}
+            </span>
           </div>
         </div>
       </div>
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-12">
-        <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-xl rounded-3xl border-2 border-purple-500/50 shadow-2xl shadow-purple-500/20 p-8">
-          <h2 className="text-3xl font-bold text-center text-white mb-8">
+      <div className="relative z-10 max-w-4xl mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
+        <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-xl rounded-2xl sm:rounded-3xl border-2 border-purple-500/50 shadow-2xl shadow-purple-500/20 p-4 sm:p-6 md:p-8">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-white mb-4 sm:mb-6 md:mb-8">
             Que forma es esta?
           </h2>
-          <div className="flex justify-center mb-12">
-            <div className="text-[200px] animate-bounce">
+          <div className="flex justify-center mb-6 sm:mb-8 md:mb-12">
+            <div className="text-8xl sm:text-9xl md:text-[200px] animate-bounce">
               {currentShape.icon}
             </div>
           </div>
           {showCorrectAnswer && selectedAnswer !== currentShape.name && (
-            <div className="mb-6 p-4 bg-yellow-500/20 border-2 border-yellow-500 rounded-xl text-center">
-              <p className="text-yellow-300 text-xl font-bold">
+            <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-yellow-500/20 border-2 border-yellow-500 rounded-xl text-center">
+              <p className="text-yellow-300 text-base sm:text-lg md:text-xl font-bold">
                 La respuesta correcta es: {currentShape.name}{" "}
                 {currentShape.icon}
               </p>
             </div>
           )}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             {options.map((option) => (
               <Button
                 key={option.name}
                 onClick={() => handleAnswer(option.name)}
                 disabled={selectedAnswer !== null}
-                className={`h-32 text-2xl font-bold rounded-2xl transition-all duration-300 flex flex-col items-center justify-center gap-2 ${
+                className={`h-24 sm:h-28 md:h-32 text-lg sm:text-xl md:text-2xl font-bold rounded-xl sm:rounded-2xl transition-all duration-300 flex flex-col items-center justify-center gap-1 sm:gap-2 ${
                   selectedAnswer === option.name
                     ? option.name === currentShape.name
                       ? "bg-gradient-to-r from-green-500 to-emerald-500 scale-110"
@@ -216,7 +220,9 @@ export default function ShapesGame({ onBack }: ShapesGameProps) {
                     : `bg-gradient-to-r ${option.color} hover:scale-105`
                 } text-white shadow-lg`}
               >
-                <div className="text-5xl">{option.icon}</div>
+                <div className="text-3xl sm:text-4xl md:text-5xl">
+                  {option.icon}
+                </div>
                 <div>{option.name}</div>
               </Button>
             ))}

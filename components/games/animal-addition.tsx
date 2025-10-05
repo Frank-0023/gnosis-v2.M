@@ -84,7 +84,7 @@ export default function AnimalAddition({ onBack }: AnimalAdditionProps) {
           {[...Array(30)].map((_, i) => (
             <div
               key={i}
-              className="absolute text-4xl opacity-30 animate-pulse"
+              className="absolute text-2xl sm:text-3xl md:text-4xl opacity-30 animate-pulse"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -100,21 +100,23 @@ export default function AnimalAddition({ onBack }: AnimalAdditionProps) {
             </div>
           ))}
         </div>
-        <div className="relative z-10 text-center">
-          <div className="text-8xl mb-6">🏆</div>
-          <h2 className="text-5xl font-bold text-white mb-4">
+        <div className="relative z-10 text-center px-4">
+          <div className="text-5xl sm:text-6xl md:text-8xl mb-4 sm:mb-6">
+            🏆
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
             Juego Completado!
           </h2>
-          <p className="text-2xl text-cyan-300 mb-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-cyan-300 mb-3 sm:mb-4">
             Acertaste: <span className="text-pink-400 font-bold">{score}</span>{" "}
             de {MAX_QUESTIONS}
           </p>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8">
             Puntuación: {Math.round((score / MAX_QUESTIONS) * 100)}%
           </p>
           <Button
             onClick={onBack}
-            className="bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 text-white text-xl px-8 py-6 rounded-2xl"
+            className="bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 text-white text-base sm:text-lg md:text-xl px-6 sm:px-8 py-4 sm:py-6 rounded-2xl"
           >
             Volver al Menu
           </Button>
@@ -135,7 +137,7 @@ export default function AnimalAddition({ onBack }: AnimalAdditionProps) {
         {[...Array(30)].map((_, i) => (
           <div
             key={i}
-            className="absolute text-4xl opacity-30 animate-pulse"
+            className="absolute text-2xl sm:text-3xl md:text-4xl opacity-30 animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -152,47 +154,49 @@ export default function AnimalAddition({ onBack }: AnimalAdditionProps) {
         ))}
       </div>
 
-      <div className="relative z-10 p-6 flex justify-between items-center">
+      <div className="relative z-10 p-3 sm:p-4 md:p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4">
         <Button
           onClick={onBack}
           variant="outline"
-          className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
+          className="bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm text-sm sm:text-base"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
+          <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
           Volver
         </Button>
-        <div className="flex gap-4">
-          <div className="bg-gradient-to-r from-cyan-500 to-teal-500 px-6 py-3 rounded-full border-2 border-white/30 shadow-lg">
-            <span className="text-white font-bold text-xl">
+        <div className="flex gap-2 sm:gap-4 w-full sm:w-auto">
+          <div className="bg-gradient-to-r from-cyan-500 to-teal-500 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full border-2 border-white/30 shadow-lg flex-1 sm:flex-none">
+            <span className="text-white font-bold text-sm sm:text-base md:text-xl">
               Pregunta {questionCount}/{MAX_QUESTIONS}
             </span>
           </div>
-          <div className="bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 rounded-full border-2 border-white/30 shadow-lg">
-            <span className="text-white font-bold text-xl">⭐ {score}</span>
+          <div className="bg-gradient-to-r from-pink-500 to-purple-500 px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full border-2 border-white/30 shadow-lg">
+            <span className="text-white font-bold text-sm sm:text-base md:text-xl">
+              ⭐ {score}
+            </span>
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-12">
-        <div className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 backdrop-blur-xl rounded-3xl border-2 border-pink-500/50 shadow-2xl shadow-pink-500/20 p-8">
-          <h2 className="text-3xl font-bold text-center text-white mb-8">
+      <div className="relative z-10 max-w-4xl mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-12">
+        <div className="bg-gradient-to-br from-pink-500/20 to-purple-500/20 backdrop-blur-xl rounded-2xl sm:rounded-3xl border-2 border-pink-500/50 shadow-2xl shadow-pink-500/20 p-4 sm:p-6 md:p-8">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-center text-white mb-4 sm:mb-6 md:mb-8">
             Cuanto es?
           </h2>
 
           {showCorrectAnswer && selectedAnswer !== correctAnswer && (
-            <div className="mb-6 p-4 bg-yellow-500/20 border-2 border-yellow-500 rounded-xl text-center">
-              <p className="text-yellow-300 text-xl font-bold">
+            <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-yellow-500/20 border-2 border-yellow-500 rounded-xl text-center">
+              <p className="text-yellow-300 text-base sm:text-lg md:text-xl font-bold">
                 La respuesta correcta es: {correctAnswer}
               </p>
             </div>
           )}
 
-          <div className="flex items-center justify-center gap-8 mb-12">
-            <div className="flex gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-12">
+            <div className="flex gap-1 sm:gap-2">
               {[...Array(num1)].map((_, i) => (
                 <div
                   key={i}
-                  className="text-5xl animate-bounce"
+                  className="text-3xl sm:text-4xl md:text-5xl animate-bounce"
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >
                   {randomItem1}
@@ -200,13 +204,15 @@ export default function AnimalAddition({ onBack }: AnimalAdditionProps) {
               ))}
             </div>
 
-            <div className="text-6xl font-bold text-pink-400">+</div>
+            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-pink-400">
+              +
+            </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-1 sm:gap-2">
               {[...Array(num2)].map((_, i) => (
                 <div
                   key={i}
-                  className="text-5xl animate-bounce"
+                  className="text-3xl sm:text-4xl md:text-5xl animate-bounce"
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >
                   {randomItem2}
@@ -215,13 +221,13 @@ export default function AnimalAddition({ onBack }: AnimalAdditionProps) {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4">
             {options.map((option) => (
               <Button
                 key={option}
                 onClick={() => handleAnswer(option)}
                 disabled={selectedAnswer !== null}
-                className={`h-24 text-4xl font-bold rounded-2xl transition-all duration-300 ${
+                className={`h-16 sm:h-20 md:h-24 text-2xl sm:text-3xl md:text-4xl font-bold rounded-xl sm:rounded-2xl transition-all duration-300 ${
                   selectedAnswer === option
                     ? option === correctAnswer
                       ? "bg-gradient-to-r from-green-500 to-emerald-500 scale-110"
