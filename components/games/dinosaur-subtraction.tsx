@@ -187,11 +187,11 @@ export default function DinosaurSubtraction({
           )}
 
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-8 mb-6 sm:mb-8 md:mb-12">
-            <div className="flex gap-1 sm:gap-2">
+            <div className="flex flex-wrap gap-1 sm:gap-2 justify-center max-w-[45%] sm:max-w-none">
               {[...Array(num1)].map((_, i) => (
                 <div
                   key={i}
-                  className="text-3xl sm:text-4xl md:text-5xl animate-bounce"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl animate-bounce"
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >
                   {randomDino1}
@@ -199,15 +199,15 @@ export default function DinosaurSubtraction({
               ))}
             </div>
 
-            <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-orange-400">
+            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-orange-400 shrink-0">
               -
             </div>
 
-            <div className="flex gap-1 sm:gap-2">
+            <div className="flex flex-wrap gap-1 sm:gap-2 justify-center max-w-[45%] sm:max-w-none">
               {[...Array(num2)].map((_, i) => (
                 <div
                   key={i}
-                  className="text-3xl sm:text-4xl md:text-5xl animate-bounce opacity-50"
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl animate-bounce opacity-50"
                   style={{ animationDelay: `${i * 0.1}s` }}
                 >
                   {randomDino2}
